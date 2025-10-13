@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.kazauna.com.br/sitemap.xml
+
+# Disallow admin areas (se existirem)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow images
+Allow: /images/

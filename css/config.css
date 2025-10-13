@@ -1,0 +1,167 @@
+/* Arquivo de configuração personalizada */
+
+:root {
+    /* Cores da Kaza Una baseadas na identidade visual */
+    --primary-gold: #C4A464;
+    --secondary-gold: #B8935A;
+    --gold-light: #D4B574;
+    --gold-dark: #A8844A;
+    
+    /* Cores neutras */
+    --dark-blue: #2c3e50;
+    --medium-blue: #34495e;
+    --light-blue: #5d6d7e;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #666666;
+    
+    /* Tipografia */
+    --font-primary: 'Inter', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+    
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Bordas */
+    --border-radius-sm: 8px;
+    --border-radius-md: 15px;
+    --border-radius-lg: 30px;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+    
+    /* Transições */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-index */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+}
+
+/* Configurações específicas da empresa */
+.kaza-una-config {
+    /* Informações da empresa */
+    --company-name: "Kaza Una";
+    --company-tagline: "Móveis Planejados e Interiores";
+    --company-address: "Ed. Helbor Offices - Av. São João, 2375 - Jardim Aquarius, São José dos Campos - SP";
+    --company-phone: "(12) 3456-7890";
+    --company-email: "contato@kazauna.com.br";
+    
+    /* Redes sociais */
+    --instagram-url: "#";
+    --facebook-url: "#";
+    --pinterest-url: "#";
+    --linkedin-url: "#";
+    
+    /* Configurações do slider */
+    --slider-autoplay-interval: 5000; /* 5 segundos */
+    --slider-transition-duration: 1000; /* 1 segundo */
+    
+    /* Configurações de formulário */
+    --form-validation-color: #e74c3c;
+    --form-success-color: #27ae60;
+}
+
+/* Classes utilitárias personalizadas */
+.text-gold { color: var(--primary-gold) !important; }
+.bg-gold { background-color: var(--primary-gold) !important; }
+.border-gold { border-color: var(--primary-gold) !important; }
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.mb-sm { margin-bottom: var(--spacing-sm) !important; }
+.mb-md { margin-bottom: var(--spacing-md) !important; }
+.mb-lg { margin-bottom: var(--spacing-lg) !important; }
+
+.p-sm { padding: var(--spacing-sm) !important; }
+.p-md { padding: var(--spacing-md) !important; }
+.p-lg { padding: var(--spacing-lg) !important; }
+
+/* Configurações de performance */
+.optimize-performance {
+    /* Otimizações de renderização */
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.lazy-load {
+    /* Placeholder para imagens lazy loading */
+    background-color: var(--medium-gray);
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C4A464' fill-opacity='0.3'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Configurações de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Configurações de impressão */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .header,
+    .hero-navigation,
+    .slide-indicators,
+    .hamburger {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: black;
+        background: white;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .btn {
+        border: 1px solid black;
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Configurações de tema escuro (preparação futura) */
+@media (prefers-color-scheme: dark) {
+    .dark-mode-ready {
+        --white: #1a1a1a;
+        --light-gray: #2d2d2d;
+        --medium-gray: #404040;
+        --dark-gray: #cccccc;
+        --dark-blue: #e8e8e8;
+        --medium-blue: #d0d0d0;
+    }
+}

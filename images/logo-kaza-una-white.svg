@@ -1,0 +1,45 @@
+<!-- SVG Logo branco para o footer -->
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="whiteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f0f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="80" fill="transparent"/>
+  
+  <!-- Logo icon (house shape) -->
+  <g transform="translate(20, 15)">
+    <!-- House outline -->
+    <path d="M25 45 L5 25 L25 5 L45 25 L45 40 L35 40 L35 45 Z" 
+          fill="none" 
+          stroke="url(#whiteGradient)" 
+          stroke-width="2"/>
+    
+    <!-- Door -->
+    <rect x="20" y="35" width="10" height="10" 
+          fill="url(#whiteGradient)"/>
+    
+    <!-- Window -->
+    <rect x="12" y="28" width="6" height="6" 
+          fill="none" 
+          stroke="url(#whiteGradient)" 
+          stroke-width="1"/>
+  </g>
+  
+  <!-- Company name -->
+  <text x="80" y="25" 
+        font-family="Inter, sans-serif" 
+        font-size="18" 
+        font-weight="700" 
+        fill="url(#whiteGradient)">KAZA UNA</text>
+  
+  <!-- Tagline -->
+  <text x="80" y="40" 
+        font-family="Inter, sans-serif" 
+        font-size="9" 
+        font-weight="400" 
+        fill="#cccccc">MÓVEIS PLANEJADOS E INTERIORES</text>
+</svg>
