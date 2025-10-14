@@ -29,7 +29,7 @@ async function sendEmailViaEmailJS(formData) {
             phone: formData.telefone,
             service: formData.servico,
             message: formData.mensagem,
-            to_email: 'contato@kazauna.com.br'
+            to_email: 'contato@kasauno.com.br'
         };
         
         const response = await emailjs.send(
@@ -119,9 +119,9 @@ async function sendViaCustomBackend(formData) {
 // ===========================================
 
 function sendViaWhatsApp(formData) {
-    const phoneNumber = '5512345678901'; // Número da Kaza Una
+    const phoneNumber = '5512345678901'; // Número da Kasa Uno
     const message = `
-*Nova solicitação de orçamento - Site Kaza Una*
+*Nova solicitação de orçamento - Site Kasa Uno*
 
 *Nome:* ${formData.nome}
 *E-mail:* ${formData.email}
@@ -270,11 +270,11 @@ foreach ($required_fields as $field) {
 }
 
 // Configurações de email
-$to = 'contato@kazauna.com.br';
-$subject = 'Nova solicitação de orçamento - Site Kaza Una';
+$to = 'contato@kasauno.com.br';
+$subject = 'Nova solicitação de orçamento - Site Kasa Uno';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$headers .= 'From: noreply@kazauna.com.br' . "\r\n";
+$headers .= 'From: noreply@kasauno.com.br' . "\r\n";
 
 // Corpo do email
 $message = "

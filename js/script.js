@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupSmoothScrolling();
         setupAnimations();
         startAutoSlide();
+        setupGalleryModal();
     }
     
     // Menu Mobile
@@ -387,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .modal-content {
                 background: white;
                 padding: 2rem;
-                border-radius: 15px;
+                border-radius: 0;
                 text-align: center;
                 max-width: 400px;
                 margin: 0 20px;
@@ -428,6 +429,66 @@ document.addEventListener('DOMContentLoaded', function() {
         
         document.head.appendChild(style);
     }
+    
+    // Galeria de fotos em tela cheia aprimorada
+    function setupGalleryModal() {
+        const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+        let modal = document.querySelector('.gallery-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.className = 'gallery-modal';
+            modal.innerHTML = '<button class="close-btn" title="Fechar">&times;</button>' +
+                '<button class="gallery-prev" title="Anterior"><i class="fas fa-chevron-left"></i></button>' +
+                '<img src="" alt="Foto em destaque">' +
+                '<button class="gallery-next" title="Próxima"><i class="fas fa-chevron-right"></i></button>';
+            document.body.appendChild(modal);
+        }
+        const modalImg = modal.querySelector('img');
+        const closeBtn = modal.querySelector('.close-btn');
+        const prevBtn = modal.querySelector('.gallery-prev');
+        const nextBtn = modal.querySelector('.gallery-next');
+        let currentIdx = 0;
+        function showModal(idx) {
+            currentIdx = idx;
+            modalImg.src = thumbs[idx].src;
+            modal.classList.add('active');
+        }
+        thumbs.forEach((thumb, idx) => {
+            thumb.addEventListener('click', () => {
+                showModal(idx);
+            });
+        });
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalImg.src = '';
+        });
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showModal((currentIdx - 1 + thumbs.length) % thumbs.length);
+        });
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showModal((currentIdx + 1) % thumbs.length);
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            } else if (e.key === 'ArrowLeft') {
+                showModal((currentIdx - 1 + thumbs.length) % thumbs.length);
+            } else if (e.key === 'ArrowRight') {
+                showModal((currentIdx + 1) % thumbs.length);
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', setupGalleryModal);
     
     // Utilitários
     function debounce(func, wait) {
@@ -560,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Funções globais para uso externo
-window.KazaUna = {
+window.KasaUno = {
     // Função para abrir modal de projeto
     openProjectModal: function(projectId) {
         console.log('Abrindo modal do projeto:', projectId);

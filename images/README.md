@@ -1,7 +1,7 @@
-# Imagens Necessárias para o Site Kaza Una
+# Imagens Necessárias para o Site Kasa Uno
 
 ## Logos
-- `logo.png` - Logo principal da Kaza Una ✅ ADICIONADO
+- `logo.png` - Logo principal da Kasa Uno ✅ ADICIONADO
 - Logo será usado tanto no header quanto no footer (com filtro branco no footer)
 
 ## Hero Section (Slider Principal)
@@ -10,7 +10,7 @@
 - `hero-3.jpg` - Imagem do terceiro slide (1920x1080px)
 
 ## Seção Sobre
-- `about-kaza-una.jpg` - Imagem sobre a empresa (800x600px)
+- `about-kasa-uno.jpg` - Imagem sobre a empresa (800x600px)
 
 ## Projetos
 - `projeto-1.jpg` - Projeto residencial moderno (600x400px)

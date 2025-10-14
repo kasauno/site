@@ -1,4 +1,4 @@
-# Próximos Passos e Otimizações - Site Kaza Una
+# Próximos Passos e Otimizações - Site Kasa Uno
 
 ## ✅ Status Atual
 - ✅ Site base criado e funcional
@@ -11,7 +11,7 @@
 ## 🎯 Próximos Passos Imediatos
 
 ### 1. Adicionar Imagens Reais
-- [ ] Substituir logos SVG pelo logo real da Kaza Una
+- [ ] Substituir logos SVG pelo logo real da Kasa Uno
 - [ ] Adicionar fotos profissionais dos projetos
 - [ ] Incluir imagens do hero slider (ambientes planejados)
 - [ ] Adicionar foto da equipe/empresa
@@ -189,6 +189,6 @@
 
 ---
 
-**🎉 Parabéns! O site da Kaza Una está pronto para ser customizado e publicado!**
+**🎉 Parabéns! O site da Kasa Uno está pronto para ser customizado e publicado!**
 
 *Lembre-se: um site é um projeto vivo que deve ser constantemente atualizado e melhorado baseado no feedback dos usuários e métricas de performance.*

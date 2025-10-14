@@ -1,7 +1,7 @@
 /* Arquivo de configuração personalizada */
 
 :root {
-    /* Cores da Kaza Una baseadas na identidade visual */
+    /* Cores da Kasa Uno baseadas na identidade visual */
     --primary-gold: #C4A464;
     --secondary-gold: #B8935A;
     --gold-light: #D4B574;
@@ -56,13 +56,13 @@
 }
 
 /* Configurações específicas da empresa */
-.kaza-una-config {
+.kasa-uno-config {
     /* Informações da empresa */
-    --company-name: "Kaza Una";
+    --company-name: "Kasa Uno";
     --company-tagline: "Móveis Planejados e Interiores";
     --company-address: "Ed. Helbor Offices - Av. São João, 2375 - Jardim Aquarius, São José dos Campos - SP";
     --company-phone: "(12) 3456-7890";
-    --company-email: "contato@kazauna.com.br";
+    --company-email: "contato@kasauno.com.br";
     
     /* Redes sociais */
     --instagram-url: "#";

@@ -1,4 +1,4 @@
-# Seleção de Fotos da Galeria - Kaza Una
+# Seleção de Fotos da Galeria - Kasa Uno
 
 ## 🎯 Critério de Seleção
 
@@ -24,7 +24,7 @@ Selecionei estrategicamente fotos da pasta `galeria/` para criar variedade visua
 ## 🏠 Outras Fotos Selecionadas
 
 ### Seção Sobre
-- **`about-kaza-una.jpg`** (IMG-20251012-WA0030.jpg)
+- **`about-kasa-uno.jpg`** (IMG-20251012-WA0030.jpg)
 - Complementa o texto sobre a empresa
 
 ### Projetos em Destaque
@@ -43,7 +43,7 @@ Selecionei estrategicamente fotos da pasta `galeria/` para criar variedade visua
 ### Critérios Utilizados:
 1. **Variedade de Ambientes**: Diferentes cômodos e estilos
 2. **Qualidade Visual**: Fotos bem iluminadas e compostas
-3. **Representatividade**: Mostra o trabalho da Kaza Una
+3. **Representatividade**: Mostra o trabalho da Kasa Uno
 4. **Diversidade de Projetos**: Residencial e corporativo
 5. **Distribuição Equilibrada**: Espaçamento na numeração para variedade
 
@@ -78,4 +78,4 @@ Total de 48 fotos disponíveis (WA0020 até WA0067), proporcionando muitas opç�
 
 ---
 
-**🎯 Resultado**: Site da Kaza Una agora possui fotos reais dos projetos, tornando-o muito mais profissional e atraente!
+**🎯 Resultado**: Site da Kasa Uno agora possui fotos reais dos projetos, tornando-o muito mais profissional e atraente!

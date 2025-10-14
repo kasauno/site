@@ -1,4 +1,4 @@
-# Design Minimalista Moderno - Site Kaza Una
+# Design Minimalista Moderno - Site Kasa Uno
 
 ## 🎯 Inspiração
 Baseado em princípios de design minimalista moderno e clean, com foco em:
@@ -131,6 +131,6 @@ O site agora possui:
 
 ---
 
-**🎨 O site da Kaza Una agora tem um design minimalista de alta qualidade, perfeito para o segmento premium de móveis planejados!**
+**🎨 O site da Kasa Uno agora tem um design minimalista de alta qualidade, perfeito para o segmento premium de móveis planejados!**
 
 **Acesse: http://localhost:8000**

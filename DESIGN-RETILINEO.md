@@ -1,4 +1,4 @@
-# Design Retilíneo - Mudanças Implementadas no Site Kaza Una
+# Design Retilíneo - Mudanças Implementadas no Site Kasa Uno
 
 ## 🎯 Objetivo
 Transformar o design de formas arredondadas para um visual mais retilíneo e angular, combinando melhor com o segmento de móveis planejados.
