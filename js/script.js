@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
+    const closeMenuBtn = document.querySelector('.close-menu-btn');
     
     // Slider do Hero
     const slides = document.querySelectorAll('.slide');
@@ -34,13 +35,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu Mobile
     function setupMobileMenu() {
         hamburger.addEventListener('click', toggleMobileMenu);
-        
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMobileMenu);
+        }
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 closeMobileMenu();
             });
         });
-        
         // Fechar menu ao clicar fora
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {

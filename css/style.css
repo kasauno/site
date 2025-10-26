@@ -1,3 +1,16 @@
+    .nav-menu .close-menu-btn {
+        display: block;
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2.2rem;
+        cursor: pointer;
+        z-index: 100000;
+        padding: 0;
+    }
 /* Variáveis CSS Globais */
 :root {
     --font-primary: 'Inter', sans-serif;
@@ -135,7 +148,7 @@ p {
     top: 0;
     width: 100%;
     z-index: 9999;
-    background: rgba(128, 128, 128, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
     backdrop-filter: blur(10px) !important;
     border-bottom: none !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
@@ -145,7 +158,6 @@ p {
 
 .header.scrolled {
     position: fixed;
-    background: rgba(128, 128, 128, 0.15) !important;
     backdrop-filter: blur(20px);
     box-shadow: 0 1px 30px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -216,24 +228,7 @@ p {
     width: 20px;
 }
 
-/* Header scrolled state - volta ao estado normal quando sai do hero */
-.header.scrolled .logo {
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
-}
-
-.header.scrolled .nav-link {
-    color: #1a1a1a;
-}
-
-.header.scrolled .nav-link:hover {
-    color: #666;
-}
-
 /* Garantir transparência total do header no hero */
-.header:not(.scrolled) {
-    background: transparent !important;
-}
-
 .header:not(.scrolled) .navbar {
     background: transparent !important;
 }
@@ -256,10 +251,6 @@ p {
     transition: 0.3s;
 }
 
-.header.scrolled .bar {
-    background: #333;
-}
-
 /* Hero Section */
 .hero {
     position: relative;
@@ -274,6 +265,7 @@ p {
 
 .hero-slider {
     position: relative;
+    background-color: #f8f9fa;
     width: 100%;
     height: 100%;
 }
@@ -776,6 +768,10 @@ section {
     gap: 4rem;
 }
 
+.contact-map {
+    min-height:320px;
+}
+
 .contact-info h3 {
     color: #C4A464;
     margin-bottom: 2rem;
@@ -908,18 +904,42 @@ section {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
         flex-direction: column;
-        background-color: white;
-        width: 100%;
+        justify-content: center;
+        align-items: center;
+        background-color: #1a1a1a;
+        color: #fff;
         text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 2rem 0;
+        transition: left 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.15);
+        padding: 0;
+        z-index: 200000;
+    }
+    .nav-menu .close-menu-btn {
+        display: block !important;
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2.2rem;
+        cursor: pointer;
+        z-index: 210000;
+        padding: 0;
     }
     
     .nav-menu.active {
         left: 0;
+    }
+    .nav-link {
+        color: #fff !important;
+        font-size: 1.3rem;
+        margin: 1.2rem 0;
+        text-shadow: none;
     }
     
     .hamburger.active .bar:nth-child(2) {
@@ -948,8 +968,8 @@ section {
     }
     
     .contact-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: block;
+        gap: 0;
     }
     
     .projects-grid {
@@ -986,7 +1006,11 @@ section {
     }
     
     section {
-        padding: 60px 0;
+        padding: 40px 0;
+    }
+    .container {
+        padding-left: 30px;
+        padding-right: 30px;
     }
     
     h1 {
@@ -994,7 +1018,7 @@ section {
     }
     
     .slide-content .container {
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 3.5rem;
         max-width: calc(100% - 3rem);
     }
     
