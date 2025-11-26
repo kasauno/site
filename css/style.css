@@ -270,28 +270,52 @@ p {
     height: 100%;
 }
 
+/* Slider: transição apenas no fundo, conteúdo troca sem animação */
 .slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transform: scale(1.05);
-    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.slide.active {
-    opacity: 1;
-    transform: scale(1);
-}
-
+/* Fundo com fade/zoom suave */
 .slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 800ms ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slide.active .slide-bg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Conteúdo sem transições herdadas; só mostra no slide ativo */
+.slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+}
+
+.slide:not(.active) .slide-content { display: none; }
+
+.slide-content .container {
+    transition: none;
 }
 
 .slide-content {
