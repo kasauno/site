@@ -2,11 +2,16 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.kasauno.com.br/sitemap.xml
+Sitemap: https://kasauno.github.io/site/sitemap.xml
 
 # Disallow admin areas (se existirem)
 Disallow: /admin/
 Disallow: /private/
+
+# Allow Google to crawl CSS and JS
+Allow: /css/
+Allow: /js/
+Allow: /images/
 
 # Allow images
 Allow: /images/
