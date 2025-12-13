@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setupAnimations();
         startAutoSlide();
         setupGalleryModal();
+        setupParallax();
     }
     
     // Menu Mobile
@@ -65,16 +66,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hero Slider
     function setupHeroSlider() {
-        // Botões de navegação
-        prevBtn.addEventListener('click', () => {
-            changeSlide(currentSlide - 1);
-            resetAutoSlide();
-        });
+        // Botões de navegação (se existirem)
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                changeSlide(currentSlide - 1);
+                resetAutoSlide();
+            });
+        }
         
-        nextBtn.addEventListener('click', () => {
-            changeSlide(currentSlide + 1);
-            resetAutoSlide();
-        });
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                changeSlide(currentSlide + 1);
+                resetAutoSlide();
+            });
+        }
         
         // Indicadores removidos para design mais clean
         
@@ -113,7 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function changeSlide(slideIndex) {
         // Remover classe active do slide atual
-        slides[currentSlide].classList.remove('active');
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.remove('active');
+        }
         
         // Calcular novo índice
         if (slideIndex >= slides.length) {
@@ -125,13 +132,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Adicionar classe active ao novo slide
-        slides[currentSlide].classList.add('active');
+        if (slides[currentSlide]) {
+            slides[currentSlide].classList.add('active');
+        }
     }
     
     function startAutoSlide() {
-        slideInterval = setInterval(() => {
-            changeSlide(currentSlide + 1);
-        }, 5000); // 5 segundos
+        if (slides.length > 1) {
+            slideInterval = setInterval(() => {
+                changeSlide(currentSlide + 1);
+            }, 6000);
+        }
     }
     
     function resetAutoSlide() {
@@ -141,8 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Efeitos de Scroll
     function setupScrollEffects() {
-        window.addEventListener('scroll', handleScroll);
-        
         // Intersection Observer para animações
         const observerOptions = {
             threshold: 0.1,
@@ -163,8 +172,21 @@ document.addEventListener('DOMContentLoaded', function() {
         );
         
         animatedElements.forEach(el => observer.observe(el));
+        
+        // Único event listener para scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    handleParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     }
-    
+
     function handleScroll() {
         const scrollTop = window.pageYOffset;
         
@@ -174,14 +196,32 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.classList.remove('scrolled');
         }
+    }
+    
+    function handleParallax() {
+        // Parallax para seções .parallax-section (original)
+        const parallaxSections = document.querySelectorAll('.parallax-section');
+        parallaxSections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const speed = 0.5;
+            
+            if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+                const yPos = -(rect.top * speed);
+                section.style.backgroundPosition = `center ${yPos}px`;
+            }
+        });
         
-        // Parallax effect no hero (opcional)
+        // Parallax para as imagens de fundo do slider
+        const scrollTop = window.pageYOffset;
         const hero = document.querySelector('.hero');
-        if (hero && scrollTop < hero.offsetHeight) {
-            const parallaxElements = document.querySelectorAll('.slide-bg');
-            parallaxElements.forEach(element => {
-                const rate = scrollTop * -0.5;
-                element.style.transform = `translateY(${rate}px)`;
+        
+        // Desabilitar parallax em dispositivos móveis
+        if (hero && scrollTop < hero.offsetHeight && window.innerWidth > 768) {
+            const slideBackgrounds = document.querySelectorAll('.slide-bg');
+            slideBackgrounds.forEach(bg => {
+                const speed = 0.6;
+                const yPos = scrollTop * speed;
+                bg.style.backgroundPosition = `center ${50 + (yPos * 0.2)}%`;
             });
         }
     }
@@ -531,11 +571,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Event listeners para performance
-    const debouncedScrollHandler = debounce(handleScroll, 10);
-    window.removeEventListener('scroll', handleScroll);
-    window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
-    
     // Pausar slider quando não estiver visível
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
@@ -577,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(viewport);
     }
 
-    // Efeito Parallax
+    // Efeito Parallax - configuração inicial das imagens de fundo
     function setupParallax() {
         const parallaxSections = document.querySelectorAll('.parallax-section');
         
@@ -586,40 +621,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const bgImage = section.getAttribute('data-bg');
             if (bgImage) {
                 section.style.backgroundImage = `url(${bgImage})`;
+                section.style.backgroundSize = 'cover';
+                section.style.backgroundPosition = 'center';
+                section.style.backgroundRepeat = 'no-repeat';
             }
         });
-        
-        // Efeito parallax no scroll
-        function handleParallax() {
-            parallaxSections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                const speed = 0.5;
-                
-                if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-                    const yPos = -(rect.top * speed);
-                    section.style.backgroundPosition = `center ${yPos}px`;
-                }
-            });
-        }
-        
-        // Throttle da função de parallax para performance
-        let ticking = false;
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(handleParallax);
-                ticking = true;
-                setTimeout(() => ticking = false, 16);
-            }
-        }
-        
-        window.addEventListener('scroll', requestTick);
-        
-        // Inicializar posições
-        handleParallax();
     }
-    
-    // Inicializar parallax
-    setupParallax();
 });
 
 // Funções globais para uso externo
