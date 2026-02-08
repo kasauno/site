@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoSlide();
         setupGalleryModal();
         setupParallax();
+        setupReviewsSlider();
     }
     
     // Menu Mobile
@@ -626,6 +627,109 @@ document.addEventListener('DOMContentLoaded', function() {
                 section.style.backgroundRepeat = 'no-repeat';
             }
         });
+    }
+
+    // Reviews Slider
+    function setupReviewsSlider() {
+        const reviewsSlider = document.getElementById('reviewsSlider');
+        const reviewsPrev = document.getElementById('reviewsPrev');
+        const reviewsNext = document.getElementById('reviewsNext');
+        const reviewsDots = document.getElementById('reviewsDots');
+        
+        if (!reviewsSlider) return; // Se não existir, sair
+        
+        const reviews = reviewsSlider.querySelectorAll('.review-item');
+        const getReviewsPerSlide = () => window.innerWidth < 769 ? 1 : 2;
+        let reviewsPerSlide = getReviewsPerSlide();
+        let currentSlide = 0;
+        let totalSlides = Math.ceil(reviews.length / reviewsPerSlide);
+        let autoPlayInterval;
+        
+        // Limpar dots anteriores
+        reviewsDots.innerHTML = '';
+        
+        // Criar dots para cada slide
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            reviewsDots.appendChild(dot);
+        }
+        
+        function showSlide(index) {
+            // Validar índice
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+            
+            // Esconder todas as avaliações
+            reviews.forEach(review => review.classList.add('hidden'));
+            
+            // Mostrar as avaliações do slide atual
+            const startIdx = currentSlide * reviewsPerSlide;
+            const endIdx = Math.min(startIdx + reviewsPerSlide, reviews.length);
+            
+            for (let i = startIdx; i < endIdx; i++) {
+                reviews[i].classList.remove('hidden');
+            }
+            
+            // Atualizar dots
+            document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function goToSlide(index) {
+            showSlide(index);
+            resetAutoPlay();
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, 10000); // 10 segundos
+        }
+        
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+        
+        // Event listeners dos botões
+        if (reviewsPrev) {
+            reviewsPrev.addEventListener('click', () => {
+                prevSlide();
+                resetAutoPlay();
+            });
+        }
+        
+        if (reviewsNext) {
+            reviewsNext.addEventListener('click', () => {
+                nextSlide();
+                resetAutoPlay();
+            });
+        }
+        
+        // Inicializar slider mostrando primeiro slide
+        showSlide(0);
+        startAutoPlay();
     }
 });
 
